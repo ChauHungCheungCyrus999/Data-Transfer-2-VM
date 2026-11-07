@@ -38,10 +38,7 @@ def average(cluster: Iterable[Vector[Double]]): Vector[Double] = {
 val dataPath =
   "file:///home/bitnami/Desktop/Data-Transfer-2-VM/clustering_dataset.txt"
 
-val points = sc.textFile(dataPath)
-  .filter(line => line.trim.nonEmpty)
-  .map(line => line.trim.split("\\s+").map(_.toDouble).toVector)
-  .cache()
+val points = sc.textFile(dataPath).filter(line => line.trim.nonEmpty).map(line => line.trim.split("\\s+").map(_.toDouble).toVector).cache()
 
 val k = 3
 val maxIterations = 100
